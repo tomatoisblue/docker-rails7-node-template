@@ -1,0 +1,15 @@
+version: '3'
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - type: bind
+        source: ./src
+        target: /src
+    ports:
+      - 3000:3000
+    tty: true
+    stdin_open: true
+    command: bash -c "bundle install && rails s -b '0.0.0.0'"
